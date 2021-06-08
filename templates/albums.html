@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albums</title>
+</head>
+<body>
+    {% for album in albums %}
+        {{ album.cover_art }}<br>
+        {{ album.title }}<br>
+        {{ album.artist }}<br>
+        {{ album.release_date }}<br>
+        {{ album.avg_rating }}<br>
+    {% endfor %}
+</body>
+</html>
