@@ -17,11 +17,23 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
-@app.route('/')
+@app.route('/index')
 @app.route('/albums')
 def get_albums():
     albums = mongo.db.album_data.find()
     return render_template("albums.html", albums=albums)
+
+
+@app.route('/profile')
+
+
+@app.route('/contact_us')
+
+
+@app.route('/sign_in')
+
+
+@app.route('/')
 
 
 if __name__ == '__main__':
