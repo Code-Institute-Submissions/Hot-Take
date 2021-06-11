@@ -44,6 +44,7 @@
             </li>
           </ul>
           <a class="nav-link" href="{{ url_for('sign_in') }}">Sign In</a>
+          <a class="nav-link" href="{{ url_for('register') }}">Register</a>
           <a class="nav-link" href="#">Log Out</a>
           <form class="d-flex">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -54,7 +55,7 @@
     </nav>
   </header>
   <div class="container-fluid">
-    <div class="card-bg col-10 offset-1">
+    <div class="card-bg col-sm-10 offset-sm-1">
       <div class="row">
         <div class="col-8 page-header">
           <h1>{{ page_title }}</h1>
