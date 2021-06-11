@@ -70,8 +70,12 @@ def profile(username):
     # grab the session
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-    return render_template(
-        "profile.html", username=username, page_title="Profile")
+
+    if session["user"]:
+        return render_template(
+            "profile.html", username=username, page_title="Profile")
+
+    return redirect(url_for("sign_in"))
 
 
 @app.route("/contact")
@@ -106,6 +110,14 @@ def sign_in():
             return redirect(url_for('sign_in'))
 
     return render_template("sign-in.html", page_title="Sign in")
+
+
+@app.route("/logout")
+def logout():
+    # removes session cookie data
+    flash("Log out Completed")
+    session.pop("user")
+    return redirect(url_for("sign_in"))
 
 
 if __name__ == "__main__":
