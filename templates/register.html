@@ -9,10 +9,16 @@
         <label for="inputEmail3" class="form-label">Email</label>
         <input type="email" id="inputEmail3" name="inputEmail3"  class="form-control" aria-label="Email"  autocomplete="email" required>
         <label for="inputusername4" class="form-label">Username</label>
-        <input type="text" id="inputusername4" name="inputusername4"  class="form-control" aria-label="User Name" minlength="6"  maxlength="18" pattern="^[a-zA-Z0-9#?!@$%^&*-]]{6,18}$" required>
+        <input type="text" id="inputusername4" name="inputusername4"  class="form-control" aria-label="User Name" minlength="6"  maxlength="18" required>
         <label for="inputPassword5" class="form-label">Password</label>
-        <input type="password" id="inputPassword5" name="inputPassword5"  class="form-control" aria-describedby="passwordHelpBlock" minlength="6"  maxlength="18" autocomplete="new-password" required>
+        <input type="password" id="inputPassword5" name="inputPassword5"  class="form-control" aria-describedby="passwordHelpBlock" minlength="6"  maxlength="18" autocomplete="new-password" pattern="^[a-zA-Z0-9#?!@$%^&*-]]{6,18}$" required>
         <button type="submit" id="form-submit" class="btn btn-primary">Register</button>
     </form>
+</div>
+<div class="row ">
+    <div class="col-12 sign-up-register-options" >
+        <h5>Already Registered?</h5>
+        <a class="btn btn-primary" href="{{ url_for('sign_in') }}" role="button">Sign Up!</a>
+    </div>
 </div>
 {% endblock %}

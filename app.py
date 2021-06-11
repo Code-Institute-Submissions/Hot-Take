@@ -51,7 +51,7 @@ def register():
         register = {
             "fist_name": request.form.get("inputFirstName1"),
             "last_name": request.form.get("inputLastName2"),
-            "email": request.form.get("inputEmail3"),
+            "email": request.form.get("inputEmail3").lower(),
             "username": request.form.get("inputusername4").lower(),
             "password": generate_password_hash(
                 request.form.get("inputPassword5"))
@@ -74,8 +74,30 @@ def contact():
     return render_template("contact.html", page_title="Contact Us")
 
 
-@app.route("/sign_in")
+@app.route("/sign_in", methods=["GET", "POST"])
 def sign_in():
+    if request.method == "POST":
+        # see if the user exists by checking the email exists in database
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("inputusername4").lower()})
+
+        if existing_user:
+            # Check the hashed password matchesthe inputted pass.
+            if check_password_hash(existing_user["password"], request.form.get(
+                    "inputPassword5")):
+                session["user"] = request.form.get("inputusername4").lower()
+                flash("Welcome back {}! What you been listning to?".format(request.form.get(
+                        "inputusername4")))
+            else:
+                # Passwords don't match!
+                flash("Incorect Username/Password")
+                return redirect(url_for('sign_in'))
+
+        else:
+            # username isnt registered on database
+            flash("Incorect Username/Password")
+            return redirect(url_for('sign_in'))
+
     return render_template("sign-in.html", page_title="Sign in")
 
 

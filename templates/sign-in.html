@@ -1,3 +1,18 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="col-sm-6 offset-sm-3 align-self-center">
+    <form method="post" action="{{ url_for('sign_in') }}">
+        <label for="inputusername4" class="form-label">Username</label>
+        <input type="text" id="inputusername4" name="inputusername4"  class="form-control" aria-label="User Name" minlength="6"  maxlength="18" required>
+        <label for="inputPassword5" class="form-label">Password</label>
+        <input type="password" id="inputPassword5" name="inputPassword5"  class="form-control" aria-describedby="passwordHelpBlock" minlength="6"  maxlength="18" autocomplete="new-password" pattern="^[a-zA-Z0-9#?!@$%^&*-]]{6,18}$" required>
+        <button type="submit" id="form-submit" class="btn btn-primary">Log In</button>
+    </form>
+</div>
+<div class="row">
+    <div class="col-12 sign-up-register-options">
+        <h5>First time? Sign up here!</h5>
+        <a class="btn btn-primary" href="{{ url_for('register') }}" role="button">Sign Up!</a>
+    </div>
+</div>
 {% endblock %}
