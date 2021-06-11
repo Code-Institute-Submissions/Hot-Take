@@ -80,6 +80,12 @@ text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
     margin-top: 1.5rem;
 }
 
+/*-----¦ Profile ¦-----*/
+
+.profile-titles{
+    text-align: center;
+}
+
 /*-----¦ Flash banners ¦-----*/
 
 .flash {
