@@ -55,6 +55,18 @@
     </nav>
   </header>
   <div class="container-fluid">
+    <section>
+      <!-- Flash messages will display here! -->
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+              <div class="flash">
+                <h4 class="flash-text">{{ message }}</h4>
+              </div>
+            {% endfor %}
+          {% endif %}
+      {% endwith %}
+    </section>
     <div class="card-bg col-sm-10 offset-sm-1">
       <div class="row">
         <div class="col-8 page-header">

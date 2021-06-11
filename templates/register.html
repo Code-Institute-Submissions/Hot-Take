@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 {% block content %}
 <div class="col-sm-7">
-    <form>
+    <form method="post" action="{{ url_for('register') }}">
         <label for="inputFirstName1" class="form-label">First Name</label>
-        <input type="text" id="inputFirstName1" name="inputFirstName1" class="form-control" aria-label="First name">
+        <input type="text" id="inputFirstName1" name="inputFirstName1" class="form-control" aria-label="First name" required>
         <label for="inputLastName2" class="form-label">Last Name</label>
-        <input type="text" id="inputLastName2" name="inputLastName2"  class="form-control" aria-label="Last name">
+        <input type="text" id="inputLastName2" name="inputLastName2"  class="form-control" aria-label="Last name" required>
         <label for="inputEmail3" class="form-label">Email</label>
-        <input type="email" id="inputEmail3" name="inputEmail3"  class="form-control" aria-label="Email">
+        <input type="email" id="inputEmail3" name="inputEmail3"  class="form-control" aria-label="Email"  autocomplete="email" required>
         <label for="inputusername4" class="form-label">Username</label>
-        <input type="text" id="inputusername4" name="inputusername4"  class="form-control" aria-label="First name">
+        <input type="text" id="inputusername4" name="inputusername4"  class="form-control" aria-label="User Name" minlength="6"  maxlength="18" pattern="^[a-zA-Z0-9#?!@$%^&*-]]{6,18}$" required>
         <label for="inputPassword5" class="form-label">Password</label>
-        <input type="password" id="inputPassword5" name="inputPassword5"  class="form-control" aria-describedby="passwordHelpBlock">
+        <input type="password" id="inputPassword5" name="inputPassword5"  class="form-control" aria-describedby="passwordHelpBlock" minlength="6"  maxlength="18" autocomplete="new-password" required>
         <button type="submit" id="form-submit" class="btn btn-primary">Register</button>
     </form>
 </div>
