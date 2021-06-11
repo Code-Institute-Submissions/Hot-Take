@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="col-sm-7">
+    <form method="post" action="{{ url_for('add_album') }}">
+        <label for="inputAlbumTitle1" class="form-label">Album Title</label>
+        <input type="text" id="inputAlbumTitle1" name="inputAlbumTitle1" class="form-control" aria-label="Album Title"
+            required>
+        <label for="inputArtist2" class="form-label">Artist</label>
+        <input type="text" id="inputArtist2" name="inputArtist2" class="form-control" aria-label="Artist" required>
+        <label for="inputReleaseDate3" class="form-label">Release date</label>
+        <input type="date" id="inputReleaseDate3" name="inputReleaseDate3" class="form-control"
+            aria-label="Release Date" required>
+        <label for="inputAlbumCover4" class="form-label">Album Cover</label>
+        <input type="text" id="inputAlbumCover4" name="inputAlbumCover4" class="form-control" aria-label="Cover Art"
+            required>
+            <label for="inputGenre5">Subject</label>
+            <select id="inputGenre5" class="form-control" name="inputGenre5" required>
+                <option>Hip-hop</option>
+                <option>Rap</option>
+                <option>R&B</option>
+                <option>Afrobeats</option>
+                <option>Dancehall</option>
+                <option>Reggae</option>
+                <option>Classical</option>
+                <option>Indie rock</option>
+                <option>Jazz</option>
+                <option>K-pop</option>
+                <option>Metal</option>
+                <option>Oldies</option>
+                <option>Pop</option>
+                <option>Rock</option>
+                <option>Other</option>
+            </select>
+        </div>
+        <button type="submit" id="form-submit" class="btn btn-primary">Add Album</button>
+    </form>
+</div>
+{% endblock %}

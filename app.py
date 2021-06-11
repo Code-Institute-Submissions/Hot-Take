@@ -29,6 +29,41 @@ def albums():
     return render_template("albums.html", albums=albums, page_title="Albums")
 
 
+# find game and show its related comments
+@app.route("/albums/<album_id>", methods=["GET", "POST"])
+def album(game_id):
+    album = mongo.db.albums.find_one({"_id": ObjectId(game_id)})
+    reviews = list(mongo.db.review.find({"game_id": ObjectId(game_id)}))
+    return render_template("album.html", game=game, comments=comments)
+
+
+@app.route("/add_album", methods=["GET", "POST"])
+def add_album():
+    # prevent brute force
+    if session.get("user"):
+        if request.method == "POST":
+            stream_link = (
+                "https://open.spotify.com/search/" + request.form.get(
+                    "inputAlbumTitle1"))
+            # get album info from the form
+            album = {
+                "title": request.form.get("inputAlbumTitle1"),
+                "artist": request.form.get(""),
+                "relaste_date": request.form.get(""),
+                "cover_art": request.form.get(""),
+                "genre": request.form.get("inputGenre5"),
+                "stream_link": stream_link
+            }
+            # write new album data into database
+            mongo.db.insert_one(album)
+            flash("Album Succesfully Added")
+            return redirect(url_for("albuums"))
+        genres = mongo.db.genres.find().sort("genre", 1)
+        return render_template("add-album.html", genres=genres)
+    flash("You need to sign in to add a new album!")
+    return redirect(url_for("sign_in"))
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
@@ -123,4 +158,4 @@ def logout():
 if __name__ == "__main__":
     app.run(host=os.environ.get('IP'),
             port=int(os.environ.get('PORT')),
-            debug=True)
+            debug=False)

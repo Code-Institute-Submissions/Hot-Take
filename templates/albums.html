@@ -1,14 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
+{% for album in albums %}
 
-    <h2>Album page</h2>
+<div class="col-sm-3 album-container">
+    <img src="{{ album.cover_art }}" loading="lazy" alt="Cover art">
+    <h3>
+        {{ album.title }}
+    </h3>
+    <a type="button" href="{{ url_for('album', id=id) }}" class="btn btn-primary">View Album</a>
+</div>
 
-    {% for album in albums %}
-        {{ album.cover_art }}<br>
-        {{ album.title }}<br>
-        {{ album.artist }}<br>
-        {{ album.release_date }}<br>
-        {{ album.avg_rating }}<br>
-    {% endfor %}
+{% endfor %}
 
 {% endblock %}
